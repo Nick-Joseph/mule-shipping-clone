@@ -38,7 +38,7 @@ class _CustomDropdownButtonState extends State<CustomDropdownButton> {
               .toList(),
           icon: const Icon(
             Icons.arrow_downward_outlined,
-            color: Colors.purple,
+            color: Color(0xff5800E0),
           ),
           onChanged: ((newValue) {
             setState(() {

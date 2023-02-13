@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:mule_clone/courier_screen.dart';
 import 'package:mule_clone/widgets/dropdownbutton.dart';
 
 import 'constant.dart';
@@ -13,12 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
       home: MyHomePage(
         title: 'Pacel',
       ),
@@ -42,7 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: const Color(0xff5800E0),
         elevation: 0,
         title: Text(widget.title),
         leading: const Icon(Icons.refresh_rounded),
@@ -87,19 +87,102 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: null,
                     icon: Icon(
                       Icons.info,
-                      color: Colors.purple,
+                      color: Color(0xff5800E0),
                       size: 18.0,
                     ),
                   ),
                 )
               ],
             ),
-            CustomDropdownButton(),
-            Image(
-              image: Image.asset(''),
+            const CustomDropdownButton(),
+            Image.asset('assets/images/demensions.png'),
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          labelText: 'Length(L)',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4.0),
+                            ),
+                          ),
+                          hintText: 'cm',
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    'X',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          labelText: 'Width(W)',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4.0),
+                            ),
+                          ),
+                          hintText: 'cm',
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    'X',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          labelText: 'Height(H)',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4.0),
+                            ),
+                          ),
+                          hintText: 'cm',
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            label: 'Back',
+            icon: Icon(Icons.back_hand),
+          ),
+          BottomNavigationBarItem(
+            label: 'Next',
+            icon: IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => CourierPage()),
+                    ),
+                  );
+                },
+                icon: Icon(Icons.abc)),
+          ),
+        ],
       ),
     );
   }
